@@ -1,2 +1,2 @@
-# investor_portfolio
-A Stock | ETF | Crypto inverstor's portfolio with real-time data and mock trades
+# Stock | ETF | Crypto Investor's Portfolio
+App title: InvestmentTracker
