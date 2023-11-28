@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'djongo'
 ]
 
 MIDDLEWARE = [
@@ -49,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'investor_portfolio.urls'
+ROOT_URLCONF = 'Setup.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'investor_portfolio.wsgi.application'
+WSGI_APPLICATION = 'Setup.wsgi.application'
 
 
 # Database
@@ -75,8 +77,19 @@ WSGI_APPLICATION = 'investor_portfolio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'investors_db',
+        'USER': 'user',
+        'PASSWORD': 'password',
+        'HOST': 'mysql_db',  # Use service name defined in docker-compose.yml
+        'PORT': '3306',
+    },
+    'mongo': {
+        'ENGINE': 'djongo',
+        'NAME': 'investment_mongo_db',
+        'CLIENT': {
+            'host': 'mongodb://mongouser:mongopassword@db_mongo:27017'
+        }   
     }
 }
 
